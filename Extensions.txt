@@ -1,0 +1,5 @@
+Auto Rename Tag
+ESlint
+Live Server
+Prettier- Code formatter
+Vim
