@@ -1,4 +1,60 @@
-/*!*************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/static/styles.css ***!
-  \*************************************************************************/
+/*!*************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/main.scss ***!
+  \*************************************************************************************************************/
+/* makes sizing simpler */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; }
 
+/* remove default spacing */
+/* force styling of type through styling, rather than elements */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit; }
+
+/* min body height */
+body {
+  min-height: 100vh; }
+
+/* responsive images/videos */
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%; }
+
+.board {
+  max-width: 802px;
+  max-height: 800px;
+  border: solid black 3px;
+  margin-left: 150px;
+  margin-top: 98px;
+  margin-bottom: 99px;
+  display: flex;
+  flex-direction: column-reverse; }
+  .board__boardRow {
+    width: 100%;
+    height: 100px;
+    display: flex; }
+    .board__boardRow__boardCell {
+      width: 100px;
+      height: 100px;
+      border: 1px solid black; }
+      .board__boardRow__boardCell--black {
+        background-color: #445B5A; }
+      .board__boardRow__boardCell--white {
+        background-color: #ffffff; }
+
+* {
+  box-sizing: content-box; }
+
+body {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  background-color: #f9f9f93d; }
+
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic3R5bGVzLmNzcyIsIm1hcHBpbmdzIjoiOzs7QUFBQTtBQUVBOzs7RUFHRSxzQkFBc0I7O0FBR3hCO0FBQ0E7QUFFQTtFQUNFLFNBQVM7RUFDVCxVQUFVO0VBQ1YsYUFBYTs7QUFHZjtBQUVBO0VBQ0UsaUJBQWlCOztBQUduQjtBQUNBOzs7O0VBSUUsY0FBYztFQUNkLGVBQWU7O0FDZGpCO0VBWEUsZ0JBQWdCO0VBQ2hCLGlCQUFpQjtFQUNqQix1QkFBdUI7RUFDdkIsa0JBQWtCO0VBQ2xCLGdCQUFnQjtFQUNoQixtQkFBbUI7RUFDbkIsYUFBYTtFQUNiLDhCQUE4QjtFQU85QjtJQUNFLFdBQVc7SUFDWCxhQUFhO0lBQ2IsYUFBYTtJQUViO01BQ0UsWUFBWTtNQUNaLGFBQWE7TUFDYix1QkFBdUI7TUFFdkI7UUFDRSx5QkE3Qlc7TUErQmI7UUFDRSx5QkEvQlc7O0FDRG5CO0VBQ0UsdUJBQXVCOztBQUd6QjtFQUNFLGFBQWE7RUFDYiwrQkFBK0I7RUFDL0IsMkJBQTJCIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vb2Rpbi1rbmlnaHRzLXRyYXZhaWxzLy4vc3JjL3Nhc3MvZGVmYXVsdC5zY3NzIiwid2VicGFjazovL29kaW4ta25pZ2h0cy10cmF2YWlscy8uL3NyYy9zYXNzL2JvYXJkLnNjc3MiLCJ3ZWJwYWNrOi8vb2Rpbi1rbmlnaHRzLXRyYXZhaWxzLy4vc3JjL3Nhc3MvdGFnTmFtZS5zY3NzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qIG1ha2VzIHNpemluZyBzaW1wbGVyICovXG5cbiosXG4qOjpiZWZvcmUsXG4qOjphZnRlciB7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG59XG5cbi8qIHJlbW92ZSBkZWZhdWx0IHNwYWNpbmcgKi9cbi8qIGZvcmNlIHN0eWxpbmcgb2YgdHlwZSB0aHJvdWdoIHN0eWxpbmcsIHJhdGhlciB0aGFuIGVsZW1lbnRzICovXG5cbioge1xuICBtYXJnaW46IDA7XG4gIHBhZGRpbmc6IDA7XG4gIGZvbnQ6IGluaGVyaXQ7XG59XG5cbi8qIG1pbiBib2R5IGhlaWdodCAqL1xuXG5ib2R5IHtcbiAgbWluLWhlaWdodDogMTAwdmg7XG59XG5cbi8qIHJlc3BvbnNpdmUgaW1hZ2VzL3ZpZGVvcyAqL1xuaW1nLFxucGljdHVyZSxcbnN2ZyxcbnZpZGVvIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG1heC13aWR0aDogMTAwJTtcbn1cbiIsIiRibGFja0NlbGw6ICM0NDVCNUE7XG4kd2hpdGVDZWxsOiAjZmZmZmZmO1xuXG5AbWl4aW4gYm9hcmR7XG4gIG1heC13aWR0aDogODAycHg7XG4gIG1heC1oZWlnaHQ6IDgwMHB4O1xuICBib3JkZXI6IHNvbGlkIGJsYWNrIDNweDtcbiAgbWFyZ2luLWxlZnQ6IDE1MHB4O1xuICBtYXJnaW4tdG9wOiA5OHB4O1xuICBtYXJnaW4tYm90dG9tOiA5OXB4O1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uLXJldmVyc2U7XG59XG5cblxuLmJvYXJke1xuICBAaW5jbHVkZSBib2FyZDtcbiAgXG4gICZfX2JvYXJkUm93e1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGhlaWdodDogMTAwcHg7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBcbiAgICAmX19ib2FyZENlbGx7XG4gICAgICB3aWR0aDogMTAwcHg7XG4gICAgICBoZWlnaHQ6IDEwMHB4O1xuICAgICAgYm9yZGVyOiAxcHggc29saWQgYmxhY2s7XG5cbiAgICAgICYtLWJsYWNre1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkYmxhY2tDZWxsO1xuICAgICAgfVxuICAgICAgJi0td2hpdGV7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICR3aGl0ZUNlbGw7XG4gICAgICB9XG4gICAgfVxuICB9IFxufSIsIip7XG4gIGJveC1zaXppbmc6IGNvbnRlbnQtYm94O1xufVxuXG5ib2R5e1xuICBkaXNwbGF5OiBncmlkO1xuICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IGF1dG8gMWZyO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjlmOWY5M2Q7XG59Il0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9*/

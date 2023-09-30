@@ -1,0 +1,37 @@
+$blackCell: #445B5A;
+$whiteCell: #ffffff;
+
+@mixin board{
+  max-width: 802px;
+  max-height: 800px;
+  border: solid black 3px;
+  margin-left: 150px;
+  margin-top: 98px;
+  margin-bottom: 99px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+
+.board{
+  @include board;
+  
+  &__boardRow{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    
+    &__boardCell{
+      width: 100px;
+      height: 100px;
+      border: 1px solid black;
+
+      &--black{
+        background-color: $blackCell;
+      }
+      &--white{
+        background-color: $whiteCell;
+      }
+    }
+  } 
+}

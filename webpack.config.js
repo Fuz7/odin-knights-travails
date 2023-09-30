@@ -12,7 +12,7 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
-    assetModuleFilename: 'static/[name].[ext]', // To set asset/resources names
+    assetModuleFilename: 'assets/fonts/[name].[ext]', // To set asset/resources names
     clean: true,
   },
 
@@ -66,19 +66,20 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/i,
+        test: /\.(sa|sc|c)ss$/,
         use: [
           process.env.NODE_ENV === 'development' // To make css watchable
             ? 'style-loader'
             : MiniCssExtractPlugin.loader,
           'css-loader',
+          'sass-loader',
         ],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'static/images/[name][ext]', // Output image filename with image/ prefix
+          filename: 'assets/images/[name][ext]', // Output image filename with image/ prefix
         },
       },
       {
