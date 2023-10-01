@@ -1,0 +1,44 @@
+$blackCell: #445B5A;
+$whiteCell: #ffffff;
+$buttonColor: #2C3737;
+$buttonHover: rgb(65, 93, 116);
+$blackCellText: #e9e8d1;
+
+
+@mixin board{
+  max-width: 802px;
+  max-height: 800px;
+  border: solid black 3px;
+  margin-left: 100px;
+  margin-top: 98px;
+  margin-bottom: 99px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+@mixin button{
+  width: 185px;
+  height: 64px;
+  border-radius: 4px;
+  font-family: 'imfell';
+  background-color: $buttonColor;
+  border: 0px;
+  color: white;
+  font-size: 48px;
+  cursor: pointer;
+  margin-top: 18px;
+  align-self: center;
+  box-shadow: 4px 4px 8px rgba($color: #000000, $alpha: .62);
+}
+
+
+@font-face {
+  font-family: 'imperial';
+  src: url('../assets/fonts/ImperialScript-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'imfell';
+  src: url('../assets/fonts/IMFellEnglishSC-Regular.ttf');
+}
+

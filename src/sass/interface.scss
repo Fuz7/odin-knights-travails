@@ -1,0 +1,109 @@
+
+.interface{
+  padding-left: 94px;
+  padding-right: 53px;
+  display: flex;
+  flex-direction: column;
+  gap: 71px;
+  &__title{
+    margin-left: 37px;
+    margin-top: 71px;
+    font-family: 'imperial';
+    font-size: 128px;
+  }
+
+  &__buttonContainer{
+    display: flex;
+    flex-direction: column;
+
+    &__knightButton{
+      align-self: center;
+      width: 150px;
+      height: 150px;
+      border: 2px solid black;
+      border-radius: 2px;
+      background-image: url('../assets/images/knightButton.svg');
+      cursor: pointer;
+
+      &:focus-visible{
+        background-color: lightgreen;
+      }
+
+      &:hover{
+        background-color: rgb(159, 182, 202);
+      }
+    }
+
+    &__knightButton.knightSelected{
+      background-image: none
+    }
+
+    &__resetButton{
+      @include button;
+      outline-color: black;
+      outline-offset: 3px;
+      &:hover{
+        background-color: $buttonHover;
+      }
+      &:focus-visible{
+        background-color: green;
+      }
+    }
+
+    &__pathTravailContainer{
+      display: flex;
+      justify-content: space-between;
+
+
+      %selectAndTravailButton{
+        @include button;
+        margin-top: 30px;
+        width: 287px;
+        height: 98px;
+      }
+
+      &__selectPathButton{
+        @extend %selectAndTravailButton;
+
+        &:hover{
+          background-color: $buttonHover;
+        }
+        &:focus-visible{
+          background-color: green;
+        }
+
+      }
+
+      &__travailButton{
+        @extend %selectAndTravailButton;
+        
+        &:hover{
+          background-color: $buttonHover;
+        }
+        &:focus-visible{
+          background-color: green;
+        }
+
+      }
+    }
+
+    &__knightsTourButton{
+      @include button;
+      width: 368px;
+      height: 100px;
+      margin-top: 40px;
+
+      &:hover{
+        background-color: $buttonHover;
+      }
+      &:focus-visible{
+        background-color: green;
+      }
+
+
+    }
+
+  }
+
+
+}

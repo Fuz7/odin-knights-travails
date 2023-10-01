@@ -1,16 +1,4 @@
-$blackCell: #445B5A;
-$whiteCell: #ffffff;
 
-@mixin board{
-  max-width: 802px;
-  max-height: 800px;
-  border: solid black 3px;
-  margin-left: 150px;
-  margin-top: 98px;
-  margin-bottom: 99px;
-  display: flex;
-  flex-direction: column-reverse;
-}
 
 
 .board{
@@ -31,6 +19,16 @@ $whiteCell: #ffffff;
       }
       &--white{
         background-color: $whiteCell;
+      }
+    }
+
+    .knightSelected &__boardCell{
+      cursor: pointer;
+      
+      &:hover{
+        background-image: url('../assets/images/knightHovered.svg');
+        background-size: contain;
+        background-position: center ;
       }
     }
   } 

@@ -6,4 +6,5 @@ body{
   display: grid;
   grid-template-columns: auto 1fr;
   background-color: #f9f9f93d;
+  overflow-y: hidden;
 }
