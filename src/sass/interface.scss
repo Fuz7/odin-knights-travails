@@ -34,7 +34,8 @@
       }
     }
 
-    &__knightButton.knightSelected{
+    &__knightButton.knightSelected,
+    &__knightButton.knightPlaced{
       background-image: none
     }
 
@@ -65,12 +66,15 @@
       &__selectPathButton{
         @extend %selectAndTravailButton;
 
-        &:hover{
+        &:hover,
+        &.endPathSelected{
           background-color: $buttonHover;
         }
         &:focus-visible{
           background-color: green;
         }
+
+        
 
       }
 

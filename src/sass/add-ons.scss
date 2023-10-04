@@ -3,7 +3,14 @@ $whiteCell: #ffffff;
 $buttonColor: #2C3737;
 $buttonHover: rgb(65, 93, 116);
 $blackCellText: #e9e8d1;
+$hoveredCell: #8417af8a;
+$endCell: #8417af;
 
+:root{
+  --knight-animation-duration: .3s;
+  --upward-animation: 0px;
+  --downward-animation: 0px;
+}
 
 @mixin board{
   max-width: 802px;
@@ -42,3 +49,35 @@ $blackCellText: #e9e8d1;
   src: url('../assets/fonts/IMFellEnglishSC-Regular.ttf');
 }
 
+@keyframes up {
+  0%{
+    
+  }
+  100%{
+    transform: translateY(100px);
+  }
+}
+@keyframes down {
+  0%{
+    
+  }
+  100%{
+    transform: translateY(-100px);
+  }
+}
+@keyframes right {
+  0%{
+    
+  }
+  100%{
+    transform: translateX(100px);
+  }
+}
+@keyframes left {
+  0%{
+    
+  }
+  100%{
+    transform: translateX(-100px);
+  }
+}

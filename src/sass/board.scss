@@ -20,6 +20,10 @@
       &--white{
         background-color: $whiteCell;
       }
+
+      & > #knight.animating{
+        animation: none var(--knight-animation-duration) ease forwards ;
+      }
     }
 
     .knightSelected &__boardCell{
@@ -31,5 +35,20 @@
         background-position: center ;
       }
     }
+
+    .endPathSelected &__boardCell{
+      cursor: pointer;
+
+      &:hover{
+        background-color: $hoveredCell;
+      }
+    }
+
+    &__boardCell#endPath{
+      background-color: $endCell;
+    }
+    
+  
+
   } 
 }

@@ -1,4 +1,6 @@
+import { animateTravail } from './animation';
 import './assets/images/knightPlaced.svg';
+import knightsTravails, { knight } from './knight_travail';
 
 (function createInterface() {
   const body = document.getElementsByTagName('body')[0];
@@ -77,7 +79,7 @@ import './assets/images/knightPlaced.svg';
       else if (i % 2 !== 0 && j % 2 !== 0)
         boardCell.classList.add('board__boardRow__boardCell--white');
       boardCell.setAttribute('data-row', i);
-      boardCell.setAttribute('data-cell', j);
+      boardCell.setAttribute('data-column', j);
       boardRow.appendChild(boardCell);
     }
     boardContainer.append(boardRow);
@@ -86,22 +88,54 @@ import './assets/images/knightPlaced.svg';
 })();
 
 (function knightEvents(){
-  let board = document.getElementById('board')
-  let knightButton = document.getElementById('knightButton');
+  const board = document.getElementById('board')
+  const knightButton = document.getElementById('knightButton');
+  const endPathButton = document.getElementById('selectPathButton')
   knightButton.addEventListener('click',()=>{
     board.classList.add('knightSelected')
     knightButton.classList.add('knightSelected')
+    board.classList.remove('endPathSelected')
+    endPathButton.classList.remove('endPathSelected')
   })
-
-
-
 })();
 
+(function endPathEvents(){
+  const board = document.getElementById('board');
+  const knightButton = document.getElementById('knightButton');
+  const endPathButton = document.getElementById('selectPathButton')
+  endPathButton.addEventListener('click',()=>{
+    board.classList.add('endPathSelected')
+    endPathButton.classList.add('endPathSelected')
+    board.classList.remove('knightSelected')
+    knightButton.classList.remove('knightSelected')
+  })
+})()
+
+const travailKnight = () =>{
+  if( knight.position !== null && knight.endCell !== null ){
+    let knightImage = document.getElementById('knight')
+    knightImage.classList.add('animating')
+    const paths = knightsTravails(knight.position,knight.endCell)
+    console.log(paths)
+    animateTravail(paths)
+  }
+}
+
+(function travailEvents(){
+  const travailButton = document.getElementById('travailButton')
+  travailButton.addEventListener('click', travailKnight)
+})()
+
+
+
 const placeKnight = (e)=>{
-  let targetedElement = e.target
-  let board = document.getElementById('board')
+  const targetedElement = e.target;
+  const row = targetedElement.getAttribute('data-row')
+  const column = targetedElement.getAttribute('data-column')
+  const board = document.getElementById('board')
+  const knightButton = document.getElementById('knightButton')
   if(board.classList.contains('knightSelected')){
-    let prevKnight = document.getElementById('knight')
+    const prevKnight = document.getElementById('knight')
     if(prevKnight) prevKnight.remove()
 
     const img = new Image()
@@ -109,17 +143,41 @@ const placeKnight = (e)=>{
     img.setAttribute('id','knight')
     targetedElement.append(img)
     board.classList.remove('knightSelected')
-  }
-
-
-  
+    knightButton.classList.remove('knightSelected')
+    knightButton.classList.add('knightPlaced')
+    knight.position = [parseInt(row,10),parseInt(column,10)]
+    console.log(knight)
+  } 
 }
+
+const placeEndPath = (e) =>{
+  const targetedElement = e.target;
+  const row = targetedElement.getAttribute('data-row')
+  const column = targetedElement.getAttribute('data-column')
+  const board = document.getElementById('board')
+  const endPathButton = document.getElementById('selectPathButton') 
+  if(board.classList.contains('endPathSelected')){
+    const prevEndPath = document.getElementById('endPath')
+    if(prevEndPath) prevEndPath.setAttribute('id','')
+    targetedElement.setAttribute('id','endPath')
+    board.classList.remove('endPathSelected')
+    endPathButton.classList.remove('endPathSelected')
+    knight.endCell = [parseInt(row, 10),parseInt(column,10)]
+    console.log(knight)
+  }
+}
+
+
+
 
 (function boardKnightPlacement(){
   const boardCell = document.querySelectorAll(
     '[class^="board__boardRow__boardCell board__boardRow__boardCell"]')
   boardCell.forEach(element =>{
     element.addEventListener('click',placeKnight)
+  })
+  boardCell.forEach(element =>{
+    element.addEventListener('click', placeEndPath)
   })
 
 })()
