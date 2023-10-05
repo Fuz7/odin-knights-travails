@@ -2,6 +2,7 @@ class Node {
   constructor(position, path = []) {
     this.position = position;
     this.path = path;
+    this.pathNum = 0
   }
 }
 
@@ -64,4 +65,55 @@ function knightsTravails(start, end) {
   return knightNode.path;
 }
 
+
+function knightTour(start){
+  const queue = [];
+  const visited = [];
+  let knightNode = new Node(start,[start])
+  queue.push(knightNode)
+  while(queue.length !== 0){
+    knightNode = queue.shift()
+    visited.push(knightNode.position)
+    const knightPath = knightNode.path
+    const xPos = knightNode.position[0]
+    const yPos = knightNode.position[1]
+    knight.knightMove.forEach((move)=>{
+      const newMove = checkValidity(move, xPos, yPos)
+      const moveVisited = newMove
+      ? visited.find(
+        (item) => item[0] === newMove[0] && item[1] === newMove[1],
+        )
+        : null;
+        
+      function getPathsNum(newMovez){
+        let pathsNum = 0
+        knight.knightMove.forEach((movez)=>{
+          const possibleMove = checkValidity(movez,newMovez[0],newMovez[1])
+      
+          if (possibleMove !== null) {
+            pathsNum += 1
+            visited.forEach((visitedElement)=>{
+              if(possibleMove[0] === visitedElement[0] && possibleMove[1] === visitedElement[1]) pathsNum -=1
+            })
+          }
+
+        })
+        return pathsNum
+      }
+      if(newMove !== null && !moveVisited){
+        const newMovePathNum = getPathsNum(newMove)
+        const childNode = new Node(newMove,[...knightPath]) 
+        childNode.path.push(newMove)
+        childNode.pathNum = newMovePathNum
+        queue.push(childNode)
+      }
+    })
+    queue.sort((a,b)=> a.pathNum - b.pathNum)
+    queue.splice(1,queue.length - 1)
+  }
+  return visited
+}
+
+knightTour([2,3])
 export default knightsTravails;
+export {knightTour}

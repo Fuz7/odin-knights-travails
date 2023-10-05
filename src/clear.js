@@ -1,6 +1,8 @@
 import { knight } from './knight_travail';
 
 function clearBoard() {
+  const startCell = document.getElementsByClassName('startPath')[0]
+  if(startCell !== undefined) startCell.classList.remove('startPath')
   const boardCell = document.querySelectorAll(
     '[class^="board__boardRow__boardCell"]',
   );

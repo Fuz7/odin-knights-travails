@@ -69,7 +69,10 @@
       color: white;
       gap: 5px;
     }
-    
+   
+    &__boardCell.startPath{
+      background-color: #19ca19;
+    }
   
 
   } 

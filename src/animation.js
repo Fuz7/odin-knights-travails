@@ -32,6 +32,10 @@ function animateTravail(paths) {
       const touchedCell = document.querySelector(`div[data-row="${paths[animationCounter/2][0]}"][data-column="${paths[animationCounter/2][1]}"]`)
       touchedCell.textContent = animationCounter/2
       newCurrentCell.append(img)
+      if(animationCounter === 126){
+        const finishCell = document.querySelector(`div[data-row="${paths[63][0]}"][data-column="${paths[63][1]}"]`)
+        finishCell.setAttribute('id','endPath')
+      }
       return;
     } 
       
