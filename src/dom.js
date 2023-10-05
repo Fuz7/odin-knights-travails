@@ -1,6 +1,7 @@
-import { animateTravail } from './animation';
+import animateTravail from './animation';
 import './assets/images/knightPlaced.svg';
 import knightsTravails, { knight } from './knight_travail';
+import clearBoard, {resetBoard} from './clear';
 
 (function createInterface() {
   const body = document.getElementsByTagName('body')[0];
@@ -109,11 +110,16 @@ import knightsTravails, { knight } from './knight_travail';
     board.classList.remove('knightSelected')
     knightButton.classList.remove('knightSelected')
   })
+})();
+
+(function resetEvents(){
+  const resetButton = document.getElementById('resetButton')
+  resetButton.addEventListener('click',resetBoard)
 })()
 
 const travailKnight = () =>{
   if( knight.position !== null && knight.endCell !== null ){
-    let knightImage = document.getElementById('knight')
+    const knightImage = document.getElementById('knight')
     knightImage.classList.add('animating')
     const paths = knightsTravails(knight.position,knight.endCell)
     console.log(paths)
@@ -130,6 +136,7 @@ const travailKnight = () =>{
 
 const placeKnight = (e)=>{
   const targetedElement = e.target;
+  clearBoard()
   const row = targetedElement.getAttribute('data-row')
   const column = targetedElement.getAttribute('data-column')
   const board = document.getElementById('board')
@@ -137,7 +144,6 @@ const placeKnight = (e)=>{
   if(board.classList.contains('knightSelected')){
     const prevKnight = document.getElementById('knight')
     if(prevKnight) prevKnight.remove()
-
     const img = new Image()
     img.src = './assets/images/knightPlaced.svg'
     img.setAttribute('id','knight')
@@ -152,6 +158,7 @@ const placeKnight = (e)=>{
 
 const placeEndPath = (e) =>{
   const targetedElement = e.target;
+  clearBoard()
   const row = targetedElement.getAttribute('data-row')
   const column = targetedElement.getAttribute('data-column')
   const board = document.getElementById('board')

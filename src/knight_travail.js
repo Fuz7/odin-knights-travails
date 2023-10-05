@@ -9,7 +9,6 @@ export const knight = (() => {
   const position = null;
   const endCell = null;
   const pathLenght = null;
-  const animationState = null;
   const path = [];
   const knightMove = [
     [2, 1],
@@ -21,7 +20,7 @@ export const knight = (() => {
     [-1, -2],
     [-2, -1],
   ];
-  return { animationState, endCell, pathLenght, path, position, knightMove };
+  return { endCell, pathLenght, path, position, knightMove };
 })();
 
 function checkValidity(arr, startingX, startingY) {

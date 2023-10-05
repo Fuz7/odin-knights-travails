@@ -36,7 +36,10 @@
 
     &__knightButton.knightSelected,
     &__knightButton.knightPlaced{
-      background-image: none
+      background-image: none; 
+    }
+    &__knightButton.knightSelected{
+      background-color: rgb(159, 182, 202);
     }
 
     &__resetButton{
