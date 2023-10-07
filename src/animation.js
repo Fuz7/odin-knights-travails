@@ -19,41 +19,56 @@ function animateTravail(paths) {
   let yPos = 0;
 
   function handleAnimation() {
-    if (animationCounter === animationLenght){
-      knight.position = paths[animationCounter / 2]
-      console.log(knight.position)
-      const newCurrentCell = document.querySelector(`div[data-row="${knight.position[0]}"][data-column="${knight.position[1]}"]`
-      )
-      animatingKnight.remove()
-      const img = new Image()
-      img.src = './assets/images/knightPlaced.svg'
-      img.setAttribute('id','knight')
-      img.classList.add('finished')
-      const touchedCell = document.querySelector(`div[data-row="${paths[animationCounter/2][0]}"][data-column="${paths[animationCounter/2][1]}"]`)
-      touchedCell.textContent = animationCounter/2
-      newCurrentCell.append(img)
-      if(animationCounter === 126){
-        const finishCell = document.querySelector(`div[data-row="${paths[63][0]}"][data-column="${paths[63][1]}"]`)
-        finishCell.setAttribute('id','endPath')
+    if (animationCounter === animationLenght) {
+      knight.position = paths[animationCounter / 2];
+      console.log(knight.position);
+      const newCurrentCell = document.querySelector(
+        `div[data-row="${knight.position[0]}"][data-column="${knight.position[1]}"]`,
+      );
+      animatingKnight.remove();
+      const img = new Image();
+      img.src = './assets/images/knightPlaced.svg';
+      img.setAttribute('id', 'knight');
+      img.classList.add('finished');
+      const touchedCell = document.querySelector(
+        `div[data-row="${paths[animationCounter / 2][0]}"][data-column="${
+          paths[animationCounter / 2][1]
+        }"]`,
+      );
+      touchedCell.textContent = animationCounter / 2;
+      newCurrentCell.append(img);
+      if (animationCounter === 126) {
+        const finishCell = document.querySelector(
+          `div[data-row="${paths[63][0]}"][data-column="${paths[63][1]}"]`,
+        );
+        finishCell.setAttribute('id', 'endPath');
       }
       return;
-    } 
-      
-    if(animationCounter % 2 === 0 && animationCounter !== 0){
-      const touchedCell = document.querySelector(`div[data-row="${paths[animationCounter/2][0]}"][data-column="${paths[animationCounter/2][1]}"]`)
-      touchedCell.classList.add('traversed')
-      touchedCell.textContent = animationCounter/2
+    }
+
+    if (animationCounter % 2 === 0 && animationCounter !== 0) {
+      const touchedCell = document.querySelector(
+        `div[data-row="${paths[animationCounter / 2][0]}"][data-column="${
+          paths[animationCounter / 2][1]
+        }"]`,
+      );
+      touchedCell.classList.add('traversed');
+      touchedCell.textContent = animationCounter / 2;
     }
 
     const animationValue = animationOffsets[animationCounter];
     const animationPx = animationValue * 100;
 
     if (animationCounter % 2 === 0 || animationCounter === 0) {
-      animatingKnight.style.transform = `translate(${parseInt(xPos,10)}px,${parseInt(yPos,10) + -animationPx}px)`;
-      yPos = parseInt(yPos,10) + (-animationPx);
-    } else if(animationCounter % 2 !== 0){
-      animatingKnight.style.transform = `translate(${parseInt(xPos,10) + animationPx}px,${parseInt(yPos,10)}px)`;
-      xPos = parseInt(xPos,10) + animationPx
+      animatingKnight.style.transform = `translate(${parseInt(xPos, 10)}px,${
+        parseInt(yPos, 10) + -animationPx
+      }px)`;
+      yPos = parseInt(yPos, 10) + -animationPx;
+    } else if (animationCounter % 2 !== 0) {
+      animatingKnight.style.transform = `translate(${
+        parseInt(xPos, 10) + animationPx
+      }px,${parseInt(yPos, 10)}px)`;
+      xPos = parseInt(xPos, 10) + animationPx;
     }
 
     animationCounter += 1;

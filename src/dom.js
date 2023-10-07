@@ -121,7 +121,7 @@ const travailKnight = () => {
     const startCell = document.querySelector(
       `div[data-row="${knight.position[0]}"][data-column="${knight.position[1]}"]`,
     );
-    startCell.classList.add('startPath')
+    startCell.classList.add('startPath');
     const knightImage = document.getElementById('knight');
     knightImage.classList.add('animating');
     const paths = knightsTravails(knight.position, knight.endCell);
@@ -137,11 +137,11 @@ const travailKnight = () => {
 
 const tourKnight = () => {
   if (knight.position !== null) {
-    clearBoard()
+    clearBoard();
     const startCell = document.querySelector(
       `div[data-row="${knight.position[0]}"][data-column="${knight.position[1]}"]`,
     );
-    startCell.classList.add('startPath')
+    startCell.classList.add('startPath');
     const knightImage = document.getElementById('knight');
     const endPath = document.getElementById('endPath');
     if (endPath !== null) endPath.setAttribute('id', '');
@@ -158,12 +158,12 @@ const tourKnight = () => {
 
 const placeKnight = (e) => {
   const targetedElement = e.target;
-  clearBoard();
   const row = targetedElement.getAttribute('data-row');
   const column = targetedElement.getAttribute('data-column');
   const board = document.getElementById('board');
   const knightButton = document.getElementById('knightButton');
   if (board.classList.contains('knightSelected')) {
+    clearBoard();
     const prevKnight = document.getElementById('knight');
     if (prevKnight) prevKnight.remove();
     const img = new Image();
@@ -180,12 +180,12 @@ const placeKnight = (e) => {
 
 const placeEndPath = (e) => {
   const targetedElement = e.target;
-  clearBoard();
   const row = targetedElement.getAttribute('data-row');
   const column = targetedElement.getAttribute('data-column');
   const board = document.getElementById('board');
   const endPathButton = document.getElementById('selectPathButton');
   if (board.classList.contains('endPathSelected')) {
+    clearBoard();
     const prevEndPath = document.getElementById('endPath');
     if (prevEndPath) prevEndPath.setAttribute('id', '');
     targetedElement.setAttribute('id', 'endPath');
